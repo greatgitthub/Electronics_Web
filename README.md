@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 ## Electronics_Web
-An Electronics Maintenance website that helps users diagnose, repair, and maintain electronic devices. by calling fastly for the Technical person using the app in addition you got some information how electronics gain Knowledge !.
+An Electronics Maintenance website that helps users diagnose, repair, and maintain electronic devices. by calling fastly for the Technical person using the app in addition you got some information how electronics maintain !.
 =======
 # React + Vite + shadcn/ui Starter Template
 
