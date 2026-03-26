@@ -1,6 +1,6 @@
 <<<<<<< HEAD
-# Electronics_Web
-An Electronics Maintenance website that helps users diagnose, repair, and maintain electronic devices. It offers troubleshooting guides, tutorials, and service options, providing a simple and user-friendly platform to extend device lifespan and access reliable repair solutions.
+## Electronics_Web
+An Electronics Maintenance website that helps users diagnose, repair, and maintain electronic devices. by calling fastly for the Technical person using the app in addition you got some information how electronics gain Knowledge !.
 =======
 # React + Vite + shadcn/ui Starter Template
 
