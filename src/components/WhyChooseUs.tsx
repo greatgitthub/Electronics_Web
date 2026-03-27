@@ -18,7 +18,7 @@ const features = [
 
 const WhyChooseUs: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-slate-900 text-white relative overflow-hidden">
+    <section id="about" className="py-24 bg-slate-400 text-black relative overflow-hidden">
       {/* Abstract Background patterns */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -mr-48 -mt-48" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl -ml-48 -mb-48" />
