@@ -1,0 +1,177 @@
+/* Dashboard wrapper */
+.dashboard-wrapper {
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+/* -------------------- Topbar -------------------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1e3a8a; /* dark blue */
+  color: white;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Topbar sections */
+.top-left,
+.top-center,
+.top-right {
+  display: flex;
+  align-items: center;
+}
+
+.top-right {
+  gap: 0.5rem;
+}
+
+/* Search input */
+.search-input {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  width: 300px;
+  max-width: 100%;
+  font-size: 0.9rem;
+}
+
+/* Topbar action buttons */
+.home-btn,
+.refresh-btn,
+.logout-btn {
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.home-btn,
+.refresh-btn {
+  background-color: #2563eb;
+}
+
+.home-btn:hover,
+.refresh-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.logout-btn {
+  background-color: #dc2626;
+}
+
+.logout-btn:hover {
+  background-color: #b91c1c;
+}
+
+/* Menu toggle button for mobile */
+.menu-toggle {
+  display: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+/* -------------------- Table -------------------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.75rem;
+}
+
+th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+td img {
+  transition: transform 0.2s ease;
+}
+
+td img:hover {
+  transform: scale(1.1);
+}
+
+/* Pagination buttons */
+button {
+  cursor: pointer;
+}
+
+/* -------------------- Responsive -------------------- */
+@media screen and (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .top-left,
+  .top-right {
+    width: 100%;
+    display: none; /* hidden by default */
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    max-height: 0;
+    transition:
+      max-height 0.5s ease,
+      padding 0.5s ease;
+  }
+
+  /* Show sections with slide animation if menu is active */
+  .topbar.active .top-left,
+  .topbar.active .top-right {
+    display: flex;
+    max-height: 200px; /* enough to show content */
+    padding: 0.5rem 0;
+  }
+
+  .top-center {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .search-input {
+    width: 90%;
+  }
+
+  .home-btn,
+  .refresh-btn,
+  .logout-btn {
+    margin-left: 0;
+    margin-right: 0.5rem;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* -------------------- Optional smooth scroll -------------------- */
+html {
+  scroll-behavior: smooth;
+}

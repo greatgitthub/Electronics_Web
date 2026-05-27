@@ -1,10 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, PhoneCall } from "lucide-react";
+import { Menu, X, PhoneCall, LayoutDashboard } from "lucide-react";
 import { cn } from "../lib/utils";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getValidToken } from "../lib/auth";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isAdminAuthenticated = Boolean(getValidToken());
+  const isHomePage = location.pathname === "/" || location.pathname === "/login";
+  const isAdminLoginOpen =
+    isHomePage &&
+    new URLSearchParams(location.search).get("admin") === "login";
+
+  const handleAdminClick = () => {
+    if (isAdminAuthenticated) {
+      navigate("/admin");
+      setIsMenuOpen(false);
+      return;
+    }
+
+    navigate(isAdminLoginOpen ? "/" : "/?admin=login#admin-login");
+    setIsMenuOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -59,12 +80,27 @@ const Header: React.FC = () => {
               {link.name}
             </a>
           ))}
+
+          {/* Call Button */}
           <a
             href="tel:+251 937423224"
             className="bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 active:scale-95 shadow-md shadow-blue-200"
           >
             አሁኑኑ ይደውሉ
           </a>
+
+          <button
+            type="button"
+            onClick={handleAdminClick}
+            className="bg-slate-800 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-slate-700 transition flex items-center gap-2"
+          >
+            <LayoutDashboard className="w-4 h-4" />
+            {isAdminAuthenticated
+              ? "Admin Dashboard"
+              : isAdminLoginOpen
+                ? "Hide Admin Login"
+                : "Admin Login"}
+          </button>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -90,12 +126,27 @@ const Header: React.FC = () => {
                 {link.name}
               </a>
             ))}
+
+            {/* Call Button */}
             <a
               href="tel:+251 956535999"
               className="bg-blue-600 text-white text-center py-3 rounded-lg font-bold"
             >
               አሁኑኑ ይደውሉ
             </a>
+
+            <button
+              type="button"
+              className="bg-slate-800 text-white text-center py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-slate-700 transition"
+              onClick={handleAdminClick}
+            >
+              <LayoutDashboard className="w-4 h-4" />
+              {isAdminAuthenticated
+                ? "Admin Dashboard"
+                : isAdminLoginOpen
+                  ? "Hide Admin Login"
+                  : "Admin Login"}
+            </button>
           </div>
         </div>
       )}
